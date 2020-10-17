@@ -3,8 +3,7 @@
 
 #include <memory>
 #include "Statement.h"
-
-typedef struct st_mysql_stmt MYSQL_STMT;
+#include <mysql.h>
 
 namespace Mysql
 {

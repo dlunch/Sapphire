@@ -11,8 +11,8 @@ namespace Mysql
    class ResultBind
    {
       uint32_t m_numFields;
-      std::unique_ptr< char[] > m_isNull;
-      std::unique_ptr< char[] > m_err;
+      std::unique_ptr< bool[] > m_isNull;
+      std::unique_ptr< bool[] > m_err;
       std::unique_ptr< unsigned long[] > m_len;
       MYSQL_STMT* m_pStmt;
 

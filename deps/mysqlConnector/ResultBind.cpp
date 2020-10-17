@@ -114,11 +114,11 @@ namespace Mysql
          m_pBind.reset( new MYSQL_BIND[m_numFields] );
          memset( m_pBind.get(), 0, sizeof( MYSQL_BIND ) * m_numFields );
 
-         m_isNull.reset( new my_bool[m_numFields] );
-         memset( m_isNull.get(), 0, sizeof( my_bool ) * m_numFields );
+         m_isNull.reset( new bool[m_numFields] );
+         memset( m_isNull.get(), 0, sizeof( bool ) * m_numFields );
 
-         m_err.reset( new my_bool[m_numFields] );
-         memset( m_err.get(), 0, sizeof( my_bool ) * m_numFields );
+         m_err.reset( new bool[m_numFields] );
+         memset( m_err.get(), 0, sizeof( bool ) * m_numFields );
 
          m_len.reset( new unsigned long[m_numFields] );
          memset( m_len.get(), 0, sizeof( unsigned long ) * m_numFields );

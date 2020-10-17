@@ -407,7 +407,7 @@ std::shared_ptr< Mysql::ResultSet > Mysql::PreparedStatement::executeQuery()
 {
    doQuery();
 
-   my_bool bool_tmp = 1;
+   bool bool_tmp = 1;
    mysql_stmt_attr_set( m_pStmt, STMT_ATTR_UPDATE_MAX_LENGTH, &bool_tmp );
 
    std::shared_ptr< ResultSet > tmp( new PreparedResultSet( m_pResultBind, std::static_pointer_cast< PreparedStatement >( shared_from_this() ) ) );
@@ -417,7 +417,7 @@ std::shared_ptr< Mysql::ResultSet > Mysql::PreparedStatement::executeQuery()
 
 std::shared_ptr< Mysql::ResultSet > Mysql::PreparedStatement::getResultSet()
 {
-   my_bool bool_tmp = 1;
+   bool bool_tmp = 1;
    mysql_stmt_attr_set( m_pStmt, STMT_ATTR_UPDATE_MAX_LENGTH, &bool_tmp );
 
    std::shared_ptr< ResultSet > tmp( new PreparedResultSet( m_pResultBind, std::static_pointer_cast< PreparedStatement >( shared_from_this() ) ) );

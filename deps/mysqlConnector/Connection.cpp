@@ -2,12 +2,8 @@
 #include "MySqlBase.h"
 #include "Statement.h"
 #include "PreparedStatement.h"
-#include <mysql.h>
 
-#ifdef _MSC_VER
-  // fixes compile error when compiling with vs2019
-  #include <stdexcept>
-#endif
+#include <stdexcept>
 #include <vector>
 
 Mysql::Connection::Connection( std::shared_ptr< MySqlBase > pBase,
@@ -70,7 +66,7 @@ Mysql::Connection::Connection( std::shared_ptr< MySqlBase > pBase,
       case MYSQL_REPORT_DATA_TRUNCATION:
       case MYSQL_SECURE_AUTH:
       {
-         my_bool optVal = entry.second == "0" ? 0 : 1;
+         bool optVal = entry.second == "0" ? 0 : 1;
          setOption( entry.first, &optVal );
       }
       break;
@@ -159,7 +155,7 @@ std::shared_ptr< Mysql::MySqlBase > Mysql::Connection::getMySqlBase() const
 
 void Mysql::Connection::setAutoCommit( bool autoCommit )
 {
-   auto b = static_cast< my_bool >( autoCommit == true ? 1 : 0 );
+   auto b = static_cast< bool >( autoCommit == true ? 1 : 0 );
    if( mysql_autocommit( m_pRawCon, b ) != 0 )
       throw std::runtime_error( "Connection::setAutoCommit failed!" );
 }
